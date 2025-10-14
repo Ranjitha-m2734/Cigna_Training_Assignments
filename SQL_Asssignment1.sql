@@ -1,3 +1,5 @@
+----------------------------------------------LIBRARY MANAGEMENT--------------------------------------------------------------------------
+
 --1) List books with exactly one availabe copy.
 SELECT * FROM Books WHERE Available_Copies = 1;
 
