@@ -40,10 +40,10 @@ SELECT * FROM Books ORDER BY Title;
 SELECT SUM(Available_Copies) as Total_Copies FROM Books;
 
 --14) List borrowings with a due date in a specific month.
-SELECT * FROM Borrowings where TO_CHAR('2025-10','YYYY-MM');
+SELECT * FROM Borrowings where TO_CHAR(Due_Date,'YYYY-MM')='2025-10';
 
 --15) List authors with names longer than 10 charecters.
-SELECT Author_Name from Authors WHERE LENGTH(Authorr_Name) > 10;
+SELECT Author_Name from Authors WHERE LENGTH(Author_Name) > 10;
 
 
 
