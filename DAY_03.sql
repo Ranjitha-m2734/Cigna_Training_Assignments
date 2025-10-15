@@ -1,0 +1,15 @@
+CREATE TABLE Departments (
+  Dept_No NUMBER PRIMARY KEY,
+  Dept_Name VARCHAR2(15) NOT NULL,
+  Loc VARCHAR2(30) NOT NULL
+);
+
+CREATE TABLE Emps (
+  Emp_No NUMBER NOT NULL,
+  Dept_No NUMBER NOT NULL
+  Emp_Name VARCHAR2(15) NOT NULL,
+  Job VARCHAR2(30) NOT NULL,
+  Salary FLAOT CHECK(Salary > 0),
+  CONSTRAINT fk_customer FOREIGN KEY (Dept_No) REFERENCES Departments (Dept_No)
+);
+
