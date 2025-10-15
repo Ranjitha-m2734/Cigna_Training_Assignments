@@ -1,3 +1,5 @@
+CREATE DATABASE OFFICE
+
 CREATE TABLE DEPT (
 deptno NUMBER PRIMARY KEY,
 dept_name VARCHAR2(30) NOT NULL,
@@ -30,6 +32,44 @@ SELECT * FROM EMP;
 
 ---------------------------------------------------------------------------------------------------
 
+--1)Single-row Subquery
 SELECT emp_name, Salary 
 FROM EMP 
 WHERE Salary > (SELECT AVG(Salary) FROM EMP);
+
+--2)Multi-row Subquery
+ SELECT emp_name, deptno 
+FROM EMP
+WHERE deptno IN (SELECT deptno FROM DEPT WHERE Loc= 'NEW YORK');
+
+--3)Multi-column Subquery
+ SELECT empno, emp_name, Job, deptno 
+FROM Emp
+WHERE (Job, deptno) IN 
+      (SELECT Job, deptno FROM Emp WHERE empno = 7839); 
+
+--4)Correlated Subquery
+SELECT e.emp_name, e.Salary, e.deptno 
+FROM Emp e 
+WHERE e.Salary > (SELECT AVG(Salary) 
+FROM Emp
+WHERE deptno = e.deptno); 
+
+--5) In the WHERE Clause
+ SELECT * 
+FROM Emp
+WHERE deptno IN (SELECT deptno FROM DEPT WHERE Loc= 'CHICAGO'); 
+
+--6) In the HAVING Claus
+ SELECT deptno, AVG(Salary) 
+FROM Emp 
+GROUP BY deptno 
+HAVING AVG(Salary) > (SELECT AVG(Salary) FROM Emp);
+
+--7) In the SELECT Clause
+SELECT e.emp_name, 
+       (SELECT dept_name FROM DEPT d WHERE d.deptno = e.deptno) AS department 
+FROM Emp e;
+
+
+
