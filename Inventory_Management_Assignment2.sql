@@ -60,4 +60,11 @@ GROUP BY C.Customer_ID;
 
 
 -- QUERY 3: Update product stock quantities after orders are placed to reflect purchased items
-
+UPDATE Products P
+SET P.Stock_Quantity = P.Stock_Quantity - (
+SELECT OD.Quantity
+FROM OrderDetails OD
+WHERE OD.Product_ID = P.Product_ID)
+WHERE P.Product_ID IN (
+SELECT DISTINCT Product_ID
+FROM OrderDetails);
