@@ -30,7 +30,7 @@ INSERT INTO EMP (empno, emp_name, job, salary, deptno) VALUES (1006, 'EMILY', 'O
 SELECT * FROM DEPT;
 SELECT * FROM EMP;
 
----------------------------------------------------------------------------------------------------
+--------------------------------------Checking sub-query-------------------------------------------------------------
 
 --1)Single-row Subquery
 SELECT emp_name, Salary 
@@ -72,4 +72,20 @@ SELECT e.emp_name,
 FROM Emp e;
 
 
+------------------------------------------------------------------------------------------------------------------
+
+--a.   Display employee names along with their department names.
+SELECT e.emp_name , d.dept_name 
+FROM Emp e JOIN DEPT d ON e.deptno = d.deptno;
+
+--b.   List all employees with their job titles and the location of their department.
+SELECT e.emp_name, e.Job, d.Loc
+FROM Emp e JOIN DEPT d ON e.deptno = d.deptno
+
+--c.    Display employees who work in the SALES department.
+SELECT e.emp_name, d.dept_name, e.Job
+FROM Emp e LEFT JOIN DEPT d ON e.deptno = d.deptno
+WHERE dept_name = 'SALES';
+
+--d.  List all employees along with their department name and location, including departments that have no employees.
 
