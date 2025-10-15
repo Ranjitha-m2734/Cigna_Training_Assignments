@@ -31,9 +31,27 @@ CREATE TABLE Order_Details (
   );
   
 
-INSERT INTO Products (Product_ID, Product_Name, Categories, Prices, Stock_Quantity)
-VALUES (1, 'Laptop', 'Electronic-Gadget', 80000, 10),
-VALUES (2, 'Headphones', 'Accesories', 15000, 7),
-VALUES (3, 'Speaker', 'Accesories', 20000, 9);
+-- Inserting Values Into Products TABLE
+INSERT INTO Products VALUES (101, 'Laptop', 'Electronics', 55000, 25);
+INSERT INTO Products VALUES (102, 'Headphones', 'Accessories', 2500, 50);
 
+-- Inserting Values Into Customers TABLE
+INSERT INTO Customers VALUES (201, 'John', 'Doe', 'johndoe26@gmail.com', '9876543120');
+INSERT INTO Customers VALUES (202, 'David', 'Brown', 'davidbrown8@example.com', '9123456780');
+
+-- Inserting Values Into Orders TABLE
+INSERT INTO Orders (Order_ID, Customer_ID, Order_Date, Total_Amount) VALUES (301, 201, SYSDATE, 0);
+INSERT INTO Orders (Order_ID, Customer_ID, Order_Date, Total_Amount) VALUES (302, 202, SYSDATE, 0);
+
+-- Inserting Values Into OrderDetails TABLE
+INSERT INTO OrderDetails VALUES (401, 301, 101, 1);
+INSERT INTO OrderDetails VALUES (402, 302, 102, 2
+
+--QUERY 1: Retrieve products with low stock (eg: less than 20 units)
+SELECT *
+FROM Products
+WHERE Stock_Quantity < 20;
+
+-- QUERY 2: Calculate the total amount spent by each customer
+-- QUERY 3: Update product stock quantities after orders are placed to reflect purchased items
 
