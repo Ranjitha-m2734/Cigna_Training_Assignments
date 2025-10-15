@@ -53,5 +53,11 @@ FROM Products
 WHERE Stock_Quantity < 20;
 
 -- QUERY 2: Calculate the total amount spent by each customer
+SELECT C.Customer_ID, SUM(O.Total_Amount) as Amount_Spent
+FROM Customers C
+JOIN Orders O ON C.Customer_ID = O.Customer_ID
+GROUP BY C.Customer_ID;
+
+
 -- QUERY 3: Update product stock quantities after orders are placed to reflect purchased items
 
