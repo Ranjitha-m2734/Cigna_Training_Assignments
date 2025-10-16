@@ -75,3 +75,20 @@ Requirements:
 4. Display department name and location
 */
 
+DECLARE
+    v_dept Dept%ROWTYPE;   -- Variable of type DEPARTMENTS%ROWTYPE
+    v_dept_id Dept.Deptno%TYPE;  -- Variable to hold department ID
+BEGIN
+-- Assign a sample department ID
+    v_dept_id := 10;
+-- Retrieve department details
+SELECT *
+INTO v_dept
+FROM Dept
+WHERE Deptno = v_dept_id;
+
+-- Display department name and location
+DBMS_OUTPUT.PUT_LINE('Department Name: ' || v_dept.Dname);
+DBMS_OUTPUT.PUT_LINE('Location ID: ' || v_dept.Loc); 
+
+END;
