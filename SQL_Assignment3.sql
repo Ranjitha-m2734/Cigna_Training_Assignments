@@ -91,7 +91,10 @@ WHERE dept_name = 'SALES';
 SELECT e.emp_name, d.dept_name, d.Loc,e.job
 FROM DEPT d LEFT JOIN Emp e ON d.deptno = e.deptno
 
-  --5. Display all departments and employees, even if some employees are not assigned to any department.
+--5: Display all departments and employees, even if some employees are not assigned to any department
+SELECT D.dept_name, E.emp_name
+FROM Dept D
+FULL JOIN Emp E ON D.deptno = E.deptno;
 
 --6 Show each department name and total  salary paid to its employees
 SELECT d.dept_name, SUM(e.salary) as Total_Salary from dept d
@@ -120,3 +123,8 @@ SELECT deptno, MAX(salary)
 FROM EMP
 GROUP BY deptno
 );
+
+--10: List employees whose salary is greater than the average salary of their department
+SELECT E.emp_name, E.Salary
+FROM Emp E
+WHERE E.Salary > (SELECT AVG(Salary) FROM Emp WHERE deptno = E.deptno);
