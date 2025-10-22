@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure Payment Form</title>
+</head>
+<body>   
+      <p>This is a secure 128-bit SSL Encrypted payment. You're safe.</p>
+
+    <form>
+      <h3>Payment Method</h3>
+
+      <label>
+        <input type="radio" name="payment">
+        Credit Card (Visa, Mastercard)
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" width="35">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Mastercard-logo.png" alt="Mastercard" width="35">
+      </label>
+    
+
+      <label>
+        <input type="radio" name="payment">
+        PayPal
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" width="50">
+      </label>
+
+      <hr>
+
+      <label>Card number</label><br>
+      <input type="text" placeholder="The 16 digits on front of your card" ><br><br>
+
+      <label>Expiration date</label><br>
+      <select>
+        <option>Month</option>
+        <option>01</option>
+        <option>02</option>
+        <option>03</option>
+        <option>04</option>
+        <option>05</option>
+        <option>06</option>
+        <option>07</option>
+        <option>08</option>
+        <option>09</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
+
+      <select>
+        <option>Year</option>
+        <option>2025</option>
+        <option>2026</option>
+        <option>2027</option>
+        <option>2028</option>
+        <option>2029</option>
+      </select><br><br>
+
+      <label>CVV2/CVC2</label><br>
+      <input type="text" placeholder="The last 3 digits on back of card"><br><br>
+
+      <label>Full Name on a Card</label><br>
+      <input type="text" placeholder="Enter full name"><br><br>
+
+      <p>You will be charged $29.00 every month</p>
+
+      <button type="submit">
+        Complete Transaction
+      </button>
+    </form>
+
+
+</body>
+</html>
