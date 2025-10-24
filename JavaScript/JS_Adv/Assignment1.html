@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Course Management</title>
+</head>
+<body>
+  <h2>Course Management</h2>
+
+  <p><strong>Available Actions:</strong></p>
+
+  <input type="text" id="courseInput" placeholder="Enter course name">
+  <button onclick="showCourses()">Show</button>
+  <button onclick="addCourse()">Add</button>
+  <button onclick="removeCourse()">Remove</button>
+
+  <ul id="courseList"></ul>
+
+  <script>
+   
+    let courses = ["Mathematics", "Physics", "Computer Science"];
+
+    function showCourses() {
+      let list = document.getElementById("courseList");
+      let str = "";
+
+      for(let i in courses){
+          str += `<li>${courses[i]}</li>`;
+      }
+       list.innerHTML = str;
+    }
+
+    function addCourse() {
+      let newCourse = document.getElementById("courseInput").value;
+      if (newCourse == "") {
+        alert("Please enter a course name to add.");
+        return;
+      }
+      if(courses.includes(newCourse)){
+        alert("Course already exists")
+      }
+      else {
+        courses.push(newCourse);
+        alert("New Course added successfully!");
+      }
+      document.getElementById("courseInput").value = "";
+      showCourses();
+    }
+
+    
+    function removeCourse() {
+      let courseToRemove = document.getElementById("courseInput").value;
+      if (courseToRemove == "") {
+        alert("Please enter a course name to remove.");
+        return;
+      }
+      let index = courses.indexOf(courseToRemove);
+      if (index === -1) {
+        alert("Course not found!");
+      } else {
+        courses.splice(index, 1);
+        alert("Course removed successfully!");
+      }
+      document.getElementById("courseInput").value = "";
+      showCourses();
+    }
+
+    
+  </script>
+</body>
+</html>
