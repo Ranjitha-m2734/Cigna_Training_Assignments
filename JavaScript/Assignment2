@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Total Calculation</title>
+</head>
+<body>
+
+    <h2>Product Details</h2>
+    <hr>
+
+    <label>Product Name:</label>
+    <input type="text" id="pname"><br><br>
+
+    <label>Price:</label>
+    <input type="number" id="price"><br><br>
+
+    <label>Quantity:</label>
+    <input type="number" id="qty"><br><br>
+
+    <button onclick="calculateTotal()">Calculate Total</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateTotal() {
+            let pname = document.getElementById("pname").value;
+            let price = parseFloat(document.getElementById("price").value);
+            let qty = parseInt(document.getElementById("qty").value);
+            let result = document.getElementById("result");
+
+            if (isNaN(price) || isNaN(qty) || pname === "") {
+                result.innerText = "Please enter valid product details.";
+                return;
+            }
+
+            // Ask for confirmation
+            let confirmCalc = confirm("Do you want to proceed with the total calculation?");
+            if (!confirmCalc) {
+                result.innerText = "Calculation cancelled by user.";
+                return;
+            }
+
+            // Calculate discount
+            let discount = 0;
+            if (qty > 30) {
+                discount = 20;
+            } else if (qty > 20) {
+                discount = 15;
+            } else if (qty > 10) {
+                discount = 10;
+            }
+
+            let total = price * qty;
+            let discountAmount = (total * discount) / 100;
+            let finalAmount = total - discountAmount;
+
+            result.innerText = `Total Amount: ₹${finalAmount.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>
