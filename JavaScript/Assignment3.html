@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Cost Calculator</title>
+</head>
+<body>
+
+    <h2>Meal Cost Calculator</h2>
+    <hr>
+
+    <label>Enter Meal Base Cost:</label>
+    <input type="number" id="baseCost"><br><br>
+
+    <button onclick="calculateMealCost()">Calculate Total</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateMealCost() {
+            let baseCost = parseFloat(document.getElementById("baseCost").value);
+            let result = document.getElementById("result");
+
+            if (isNaN(baseCost) || baseCost <= 0) {
+                result.innerText = "Please enter a valid meal base cost.";
+                return;
+            }
+
+            let tip = baseCost * 0.10; // 10% tip
+            let tax = baseCost * 0.08; // 8% tax
+            let total = baseCost + tip + tax;
+
+            let roundedTotal = Math.round(total);
+
+            result.innerText = 
+                "Meal Base Cost: ₹" + baseCost.toFixed(2) + "\n" +
+                "Tip Amount (10%): ₹" + tip.toFixed(2) + "\n" +
+                "Tax Amount (8%): ₹" + tax.toFixed(2) + "\n" +
+                "-------------------------------------\n" +
+                "Total Amount: ₹" + roundedTotal;
+        }
+    </script>
+
+</body>
+</html>
