@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+</head>
+<body>
+    <h1>Array of Objects - Table format</h1>
+    <hr/>
+
+    <button onclick="button1Click()">Show Students</button>
+    <hr/>
+
+    <div id="tableContainer"></div>
+
+    <hr/>
+    <footer>
+        <mark>Note: Check the console window to see the result.</mark>    
+    </footer>
+
+    <script> 
+        function button1Click() { 
+           
+            let studentsArray = [
+                { id: 10256, name: "Scott", course: "React" },
+                { id: 10257, name: "Allen", course: "Angular" },
+                { id: 10258, name: "John", course: "Vue" },
+                { id: 10259, name: "Smith", course: "Node" },
+                { id: 10260, name: "Mary", course: "Express" }
+            ];
+
+            let tableDiv = document.getElementById("tableContainer");
+
+            let tableHTML = "<table border='1' cellpadding='5'>";
+            tableHTML += "<tr><th>Student ID</th><th>Name</th><th>Course</th></tr>";
+
+            for (let item of studentsArray) {
+                tableHTML += `<tr>
+                                <td>${item.id}</td>
+                                <td>${item.name}</td>
+                                <td>${item.course}</td>
+                              </tr>`;
+            }
+
+            tableHTML += "</table>";
+
+            tableDiv.innerHTML = tableHTML;
+
+            
+            console.table(studentsArray);
+        }
+    </script>
+</body>
+</html>
