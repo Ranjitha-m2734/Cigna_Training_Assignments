@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Advanced JavaScript - ES6 (Array of Objects)</h1>
+  <hr/>
+
+  <button onclick="showAllStudents()">Show All Students</button>
+  <br><br>
+
+  <label>Enter Course Name to Filter:</label>
+  <input type="text" id="courseInput" placeholder="e.g., React">
+  <button onclick="filterByCourse()">Filter</button>
+  <hr/>
+
+  <div id="tableContainer"></div>
+
+  <hr/>
+  <footer>
+    <mark>Note: Check the console window to see the result.</mark>
+  </footer>
+
+  <script>
+   
+    let studentsArray = [
+      { id: 10256, name: "Scott", course: "React" },
+      { id: 10257, name: "Allen", course: "Angular" },
+      { id: 10258, name: "John", course: "Vue" },
+      { id: 10259, name: "Smith", course: "Node" },
+      { id: 10260, name: "Mary", course: "Express" },
+      { id: 10261, name: "David", course: "React" },
+      { id: 10262, name: "Sarah", course: "Node" }
+    ];
+
+  
+    function displayTable(data) {
+      let tableDiv = document.getElementById("tableContainer");
+
+      if (data.length === 0) {
+        tableDiv.innerHTML = "<p>No matching records found.</p>";
+        return;
+      }
+
+      let tableHTML = "<table border='1' cellpadding='5'>";
+      tableHTML += "<tr><th>Student ID</th><th>Name</th><th>Course</th></tr>";
+
+      for (let item of data) {
+        tableHTML += `<tr>
+                        <td>${item.id}</td>
+                        <td>${item.name}</td>
+                        <td>${item.course}</td>
+                      </tr>`;
+      }
+
+      tableHTML += "</table>";
+      tableDiv.innerHTML = tableHTML;
+
+      console.table(data);
+    }
+
+   
+    function showAllStudents() {
+      displayTable(studentsArray);
+    }
+
+    
+    function filterByCourse() {
+      let courseName = document.getElementById("courseInput").value;
+      if (courseName === "") {
+        alert("Please enter a course name to filter.");
+        return;
+      }
+
+      
+      let filteredData = studentsArray.filter(student =>
+        student.course.toLowerCase() === courseName.toLowerCase()
+      );
+
+      displayTable(filteredData);
+    }
+  </script>
+</body>
+</html>
