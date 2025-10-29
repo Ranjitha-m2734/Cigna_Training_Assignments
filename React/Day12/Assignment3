@@ -1,0 +1,85 @@
+import React, { useState, useEffect } from "react";
+
+function ProuctList2() {
+  const [products, setProducts] = useState([]);
+  const [pid, setPid] = useState("");
+  const [pname, setPname] = useState("");
+  const [price, setPrice] = useState("");
+
+  useEffect(() => {
+    const data = [
+      { pid: 101, pname: "Laptop", price: 55000 },
+      { pid: 102, pname: "Mouse", price: 800 },
+      { pid: 103, pname: "Keyboard", price: 1500 },
+    ];
+    setProducts(data);
+  }, []);
+
+  const addProduct = () => {
+    if (!pid || !pname || !price) {
+      setError("All fields are required!");
+      return;
+    }
+    if (pid < 1 || pid > 9999) {
+      setError("Product ID must be between 1 and 9999!");
+      return;
+    }
+    if (pname.length <= 4) {
+      setError("Product name must be more than 4 characters!");
+      return;
+    }
+    if (price <= 0) {
+      setError("Price must be greater than 0!");
+      return;
+    }
+
+    const newProduct = { pid: Number(pid), pname, price: Number(price) };
+    setProducts([...products, newProduct]);
+    setPid("");
+    setPname("");
+    setPrice("");
+  };
+
+  return (
+    <>
+      <h2>Product Management</h2>
+
+      <h3>Add New Product</h3>
+      <label>Product ID: </label>
+      <input type="number" value={pid} onChange={(e) => setPid(e.target.value)} />
+      <br /><br />
+
+      <label>Product Name: </label>
+      <input type="text" value={pname} onChange={(e) => setPname(e.target.value)} />
+      <br /><br />
+
+      <label>Price: </label>
+      <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
+      <br /><br />
+
+      <button onClick={addProduct}>Add Product</button>
+
+      <h3>Product List</h3>
+      <table border="1" cellPadding="8">
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((p, index) => (
+            <tr key={index}>
+              <td>{p.pid}</td>
+              <td>{p.pname}</td>
+              <td>{p.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+}
+
+export default ProuctList2;
