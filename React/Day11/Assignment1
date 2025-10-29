@@ -1,0 +1,65 @@
+import React from "react";
+
+function Ass() {
+  const storeName = "TechWorld Store";
+
+  const categories = ["Electronics", "Accessories", "Gadgets"];
+  const catList = categories.map( item => <li>{item}</li>)
+
+  const storeDetails = {
+    location: "Bangalore, India",
+    founded: 2010,
+    rating: 4.7
+  };
+
+  const products = [
+    { id: 1, name: "Wireless Headphones", price: 2999, category: "Accessories" },
+    { id: 2, name: "Smartphone X", price: 49999, category: "Electronics" },
+    { id: 3, name: "Smart Watch", price: 10999, category: "Gadgets" },
+    { id: 4, name: "Bluetooth Speaker", price: 3499, category: "Accessories" }
+  ];
+
+  let catRows = products.map((x) => 
+    <tr>
+        <td>{x.id}</td>
+        <td>{x.name}</td>
+        <td>{x.price}</td>
+        <td>{x.category}</td>
+    </tr>
+);
+
+  return (
+    <>
+
+      <h1>{storeName}</h1>
+
+      <h2>Categories:</h2>
+        <ul>
+            {catList}
+        </ul>
+
+      <h2>Store Details:</h2>
+      <p>Location: {storeDetails.location}</p>
+      <p>Founded: {storeDetails.founded}</p>
+      <p>Rating: {storeDetails.rating}</p>
+
+      <h2>Featured Products:</h2>
+        <table border="1">
+            <thead> 
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Product Category</th>
+                </tr>
+            </thead>
+            <tbody>
+               {catRows}
+            </tbody>
+        </table>
+    
+    </>
+  );
+}
+
+export default Ass;
