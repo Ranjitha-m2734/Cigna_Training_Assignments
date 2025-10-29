@@ -1,0 +1,41 @@
+import React, { useState, useEffect } from "react";
+
+function ProductList() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const initialProducts = [
+      { pid: 101, pname: "Laptop", price: 55000 },
+      { pid: 102, pname: "Mouse", price: 800 },
+      { pid: 103, pname: "Keyboard", price: 1500 },
+    ];
+    setProducts(initialProducts);
+  }, []);
+
+  return (
+    <>
+      <h2>Product Details</h2>
+      <table border="1" cellPadding="8">
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((p, index) => (
+            <tr key={index}>
+              <td>{p.pid}</td>
+              <td>{p.pname}</td>
+              <td>{p.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+}
+
+export default ProductList;
+
