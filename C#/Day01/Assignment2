@@ -1,0 +1,113 @@
+using System;
+
+namespace Assignment1
+{
+    internal class Program
+    {
+        static void ShowEvenNumbers()
+        {
+            int i = 0;
+
+            while (i <= 20)
+            {
+                Console.Write($"{i}  ");
+                i = i + 2; //   i +=  2;
+            }
+        }
+
+        static void ShowOddNumbers()
+        {
+            int i = 1;
+
+            while (i <= 20)
+            {
+                Console.Write($"{i}  ");
+                i = i + 2; //   i +=  2;
+            }
+        }
+
+        static void ShowFiveMultiples()
+        {
+            for (int j = 1; j <= 10; j++)
+            {
+                Console.Write($"{j * 5} ");
+            }
+        }
+
+        //    3  5  6  9   10   12  15  18  20  21  24  25  27  30
+        static void ShowCustomNumbers()
+        {
+            for (int i = 1; i <= 30; i++)
+            {
+                if (i % 3 == 0 || i % 5 == 0)
+                {
+                    Console.Write($"{i} ");
+                }
+            }
+        }
+        static void Main(string[] args) 
+        {
+            int i = 0;
+            int methodNo = 0;
+            while (i <= 5)
+            {
+                Console.WriteLine("Choose a method : \n" +
+                "1.  Even Numbers \n" +
+                "2.  Odd Numbers \n" +
+                "3.  Five multiples \n" +
+                "4.  Custom Numbers \n" +
+                "5.  Exit ");
+                Console.WriteLine();
+                methodNo = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+
+
+
+                switch (methodNo)
+                {
+                    case 1:
+                        ShowEvenNumbers();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        break;
+
+                    case 2:
+                        ShowOddNumbers();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        break;
+
+                    case 3:
+                        ShowFiveMultiples();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        break;
+
+                    case 4:
+                        ShowCustomNumbers();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        break;
+
+                    case 5:
+                        Console.WriteLine("You choose to exit");
+                        Console.WriteLine();
+                        break;
+
+                    default:
+                        Console.WriteLine("Enter valid number between 1-5");
+                        Console.WriteLine();
+                        break;
+
+                        Console.ReadLine();
+                }
+
+                i++;
+            }
+
+                
+            Console.ReadLine();
+        }
+
+    }
+}
