@@ -4,7 +4,6 @@ namespace Assignment1
 {
      internal class EmailSender
     {
-        // Method with optional parameters
          static void SendEmail(
             string sender,
             string recipient,
