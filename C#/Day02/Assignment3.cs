@@ -13,13 +13,13 @@ namespace Assignment1
         // 2. Message with level
         static void Log(string message, string level)
         {
-            Console.WriteLine($"{level}: {message}");
+            Console.WriteLine($"[{level}]: {message}");
         }
 
         // 3. Message with level and timestamp
         static void Log(string message, string level, DateTime timestamp)
         {
-            Console.WriteLine($"{timestamp} , {level} : {message}");
+            Console.WriteLine($"[{timestamp}] , [{level}] : {message}");
         }
 
         static void Main()
