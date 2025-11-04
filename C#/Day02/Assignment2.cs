@@ -7,19 +7,19 @@ namespace Assignment1
          static void AreaCal(double r)
         {
             double area = Math.PI * r * r;
-            Console.WriteLine($"Area of Circle is : {area}"); 
+            Console.WriteLine($"Area of Circle is : {Math.Round(area,2)}"); 
         }
 
         static void AreaCal(double l, double b)
         {
             double area = l * b;
-            Console.WriteLine($"Area of Reactangle is : {area}");
+            Console.WriteLine($"Area of Reactangle is : {Math.Round(area,2)}");
         }
 
         static void AreaCal(float s)
         {
             double area = (double) s * (double) s;
-            Console.WriteLine($"Area of Square is : {area}");
+            Console.WriteLine($"Area of Square is : {Math.Round(area,2)}");
         }
 
         static void Main()
