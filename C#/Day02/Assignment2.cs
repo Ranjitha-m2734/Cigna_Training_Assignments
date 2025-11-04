@@ -16,9 +16,9 @@ namespace Assignment1
             Console.WriteLine($"Area of Reactangle is : {area}");
         }
 
-        static void AreaCal(int s)
+        static void AreaCal(float s)
         {
-            int area = s * s;
+            double area = (double) s * (double) s;
             Console.WriteLine($"Area of Square is : {area}");
         }
 
@@ -38,7 +38,7 @@ namespace Assignment1
             Console.WriteLine();
 
             Console.WriteLine("Enter the Side value for area calculation");
-            int side = Convert.ToInt32(Console.ReadLine());
+            float side = float.parse(Console.ReadLine());
             AreaCal(side);
             Console.WriteLine();
         }
